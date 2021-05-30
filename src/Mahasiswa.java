@@ -70,23 +70,21 @@ public class Mahasiswa {
 
     //Prodi
     public String jurusan(){
-
-        char kodeProdi1 = nim.charAt(4);
-        char kodeProdi2 = nim.charAt(5);
-
-        String kodeProdi = "" + kodeProdi1 +kodeProdi2;
-        if (nim.equals("01")) {
+        char kodeJurusan = nim.charAt(4);
+        char kodeJurusan2 = nim.charAt(5);
+        if(kodeJurusan == '0' && kodeJurusan2 == '1'){
             return "Teknik Informatika";
-        } else if (nim.equals("02")) {
+        }else if(kodeJurusan == '0'&& kodeJurusan2 == '2'){
             return "Teknik Industri";
-        } else if (nim.equals("03")) {
+        }else if(kodeJurusan == '0'&& kodeJurusan2 == '3'){
             return "Sistem Informasi";
-        } else if (nim.equals("04")) {
-            return " Matematika";
-        } else if (nim.equals("05")) {
+        }else if(kodeJurusan == '0'&& kodeJurusan2 == '4'){
+            return "Matematika";
+        }else if(kodeJurusan == '0'&& kodeJurusan2 == '5'){
             return "Teknik Elektro";
+        }else{
+            return "Unknown";
         }
-        return "Unknown";
     }
 
     //Jenis Kelamin
@@ -95,9 +93,9 @@ public class Mahasiswa {
         char kodeJk = nim.charAt(6);
 
         if(kodeJk == '1'){
-            return "LAKI-LAKI";
+            return "Laki-Laki";
         }else if(kodeJk == '2'){
-            return "PEREMPUAN";
+            return "Perempuan";
         }
         return "Tidak Diketahui";
     }
@@ -114,16 +112,4 @@ public class Mahasiswa {
 
     }
 
-    @Override
-    public String toString() {
-        return " Nama = " + nama + "\n" +
-                ", NIM = " + nim + "\n" +
-                ", Jenjang Pendidikan = " + jenjangPendidikan() + "\n" +
-                ", Angkatan = " + Angkatan() + "\n" +
-                ", Fakultas = " + Fakultas() + "\n" +
-                ", Jurusan = " + jurusan() + "\n" +
-                ", Jenis Kelamin = " + jenisKelamin()+ "\n" +
-                ", Nomor Mahasiswa = " + nomorMahasiswa() + "\n" +
-                '}';
-    }
 }
