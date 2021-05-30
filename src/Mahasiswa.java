@@ -1,104 +1,129 @@
 public class Mahasiswa {
-      private String nama;
-      private String nim;
-      private String JenjangPendidikan;
-      private String Angkatan;
-      private String Fakultas;
-      private String Jurusan;
-      private String JenisKelamin;
-      private String NomorMahasiswa;
+    private String nama;
+    private String nim;
 
-    public Mahasiswa() {
-    }
+    public void setNim(String nim) {
 
-    public Mahasiswa(String nama, String nim, String jenjangPendidikan,
-                     String angkatan, String fakultas, String jurusan,
-                     String jenisKelamin, String nomorMahasiswa) {
-        this.nama = nama;
         this.nim = nim;
-        JenjangPendidikan = jenjangPendidikan;
-        Angkatan = angkatan;
-        Fakultas = fakultas;
-        Jurusan = jurusan;
-        JenisKelamin = jenisKelamin;
-        NomorMahasiswa = nomorMahasiswa;
-    }
-
-    public String getNama() {
-        return nama;
     }
 
     public void setNama(String nama) {
         this.nama = nama;
     }
 
-    public String getNim() {
-        return nim;
+    public String getNama(){ return this.nama; }
+    public String getNim(){
+        return this.nim;
     }
 
-    public void setNim(String nim) {
-        this.nim = nim;
+    //Jenjang pendidikan
+    public String jenjangPendidikan(){
+
+        char kodeJenjang = nim.charAt(0);
+
+        if(kodeJenjang == '1'){
+            return "S1(Sarjana)";
+        }else if(kodeJenjang == '2'){
+            return "S2(Megister)";
+        }else if(kodeJenjang == '3'){
+            return  "S3(Doktoral)";
+        }else {
+            return "Tidak Diketahui";
+        }
+
     }
 
-    public String getJenjangPendidikan() {
-        return JenjangPendidikan;
+    //tahun masuk
+    public String Angkatan(){
+
+        char kodeTahun1 = nim.charAt(1);
+        char kodeTahun2 = nim.charAt(2);
+
+        return "20" + kodeTahun1 + kodeTahun2;
+
     }
 
-    public void setJenjangPendidikan(String jenjangPendidikan) {
-        JenjangPendidikan = jenjangPendidikan;
+    //Fakultas
+    public String Fakultas(){
+
+        char kodeFakultas = nim.charAt(3);
+
+        if (kodeFakultas == '1') {
+            return "Tarbiyah dan Keguruan";
+        } else if (kodeFakultas == '2') {
+            return "Syariah dan Hukum";
+        } else if (kodeFakultas == '3') {
+            return "Ushuluddin";
+        } else if (kodeFakultas == '4') {
+            return "Dakwah & Komunikasi";
+        } else if (kodeFakultas == '5') {
+            return "Sains dan Teknologi";
+        } else if (kodeFakultas == '6') {
+            return "Psikologi";
+        } else if (kodeFakultas == '7') {
+            return "Ekonomi dan Ilmu Sosial";
+        } else if (kodeFakultas == '8') {
+            return "Pertanian dan Peternakan";
+        }
+        return "Unknown";
     }
 
-    public String getAngkatan() {
-        return Angkatan;
+    //Prodi
+    public String jurusan(){
+
+        char kodeProdi1 = nim.charAt(4);
+        char kodeProdi2 = nim.charAt(5);
+
+        String kodeProdi = "" + kodeProdi1 +kodeProdi2;
+        if (nim.equals("01")) {
+            return "Teknik Informatika";
+        } else if (nim.equals("02")) {
+            return "Teknik Industri";
+        } else if (nim.equals("03")) {
+            return "Sistem Informasi";
+        } else if (nim.equals("04")) {
+            return " Matematika";
+        } else if (nim.equals("05")) {
+            return "Teknik Elektro";
+        }
+        return "Unknown";
     }
 
-    public void setAngkatan(String angkatan) {
-        Angkatan = angkatan;
+    //Jenis Kelamin
+    public String jenisKelamin(){
+
+        char kodeJk = nim.charAt(6);
+
+        if(kodeJk == '1'){
+            return "LAKI-LAKI";
+        }else if(kodeJk == '2'){
+            return "PEREMPUAN";
+        }
+        return "Tidak Diketahui";
     }
 
-    public String getFakultas() {
-        return Fakultas;
-    }
+    //Nomor Mahasiswa
+    public String nomorMahasiswa(){
 
-    public void setFakultas(String fakultas) {
-        Fakultas = fakultas;
-    }
+        char kodeNoMhs1= nim.charAt(7);
+        char kodeNoMhs2 = nim.charAt(8);
+        char kodeNoMhs3 = nim.charAt(9);
+        char kodeNoMhs4 = nim.charAt(10);
 
-    public String getJurusan() {
-        return Jurusan;
-    }
+        return "" + kodeNoMhs1 + kodeNoMhs2 + kodeNoMhs3 + kodeNoMhs4;
 
-    public void setJurusan(String jurusan) {
-        Jurusan = jurusan;
-    }
-
-    public String getJenisKelamin() {
-        return JenisKelamin;
-    }
-
-    public void setJenisKelamin(String jenisKelamin) {
-        JenisKelamin = jenisKelamin;
-    }
-
-    public String getNomorMahasiswa() {
-        return NomorMahasiswa;
-    }
-
-    public void setNomorMahasiswa(String nomorMahasiswa) {
-        NomorMahasiswa = nomorMahasiswa;
     }
 
     @Override
     public String toString() {
-        return "Mahasiswa { " + "\n" +
-                " nama = " + nama + "\n" +
-                " nim = " + nim + "\n" +
-                " Jenjang Pendidikan = " + JenjangPendidikan + "\n" +
-                " Angkatan = " + Angkatan + "\n" +
-                " Fakultas = " + Fakultas + "\n" +
-                " Jurusan = " + Jurusan + "\n" +
-                " Jenis Kelamin = " + JenisKelamin + "\n" +
-                " Nomor Mahasiswa = " + NomorMahasiswa + "\n" +
+        return " Nama = " + nama + "\n" +
+                ", NIM = " + nim + "\n" +
+                ", Jenjang Pendidikan = " + jenjangPendidikan() + "\n" +
+                ", Angkatan = " + Angkatan() + "\n" +
+                ", Fakultas = " + Fakultas() + "\n" +
+                ", Jurusan = " + jurusan() + "\n" +
+                ", Jenis Kelamin = " + jenisKelamin()+ "\n" +
+                ", Nomor Mahasiswa = " + nomorMahasiswa() + "\n" +
                 '}';
     }
 }

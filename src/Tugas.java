@@ -8,6 +8,7 @@ public class Tugas {
     private JButton okeButton;
     private JPanel rootPanel;
     private JLabel hasil;
+    private JButton selesai;
 
     public Tugas() {
         okeButton.addActionListener(new ActionListener() {
@@ -29,9 +30,22 @@ public class Tugas {
 
             }
         });
+        selesai.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textNama.setText(null);
+                textNim.setText(null);
+                hasil.setText(null);
+
+            }
+        });
     }
 
     public JPanel getRootPanel() {
         return rootPanel;
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }
