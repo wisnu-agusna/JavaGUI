@@ -1,27 +1,28 @@
-package Tabel;
+package UAS;
+
+import Tabel.RunSorting;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Jtabel {
-    private JTextField textJumlah;
-    private JButton urutkanButton;
-    private JTable tabelsort;
+public class AplikasiUAS {
     private JPanel RootPanel;
+    private JTextField textJumlah;
     private JTextField textAngka;
+    private JTable tablesorting;
+    private JButton okeButton;
     private DefaultTableModel tableModel;
     private boolean added = false;
-    private Object DefaultTableModel;
 
-    public Jtabel() {
+    public AplikasiUAS() {
         this.initComponents();
-        urutkanButton.addActionListener(new ActionListener() {
+
+        okeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DefaultTableModel model = (DefaultTableModel) tabelsort.getModel();
+                DefaultTableModel model = (DefaultTableModel) tablesorting.getModel();
                 String input = textAngka.getText();
                 int jumlah = Integer.parseInt(textJumlah.getText());
                 String[] stmp = input.split(",");
@@ -48,12 +49,12 @@ public class Jtabel {
                     added = true;
                 }
                 int a = 0;
-                for (int i : RunSorting.getA (input, jumlah)) {
+                for (int i : RunSorting.getA(input, jumlah)) {
                     model.setValueAt(i, a, 0);
                     a++;
                 }
                 int b = 0;
-                for (int i : RunSorting.getD (input, jumlah)) {
+                for (int i : RunSorting.getD(input, jumlah)) {
                     model.setValueAt(i, b, 1);
                     b++;
                 }
@@ -63,18 +64,19 @@ public class Jtabel {
 
     private void initComponents() {
         Object[] tableColom = {
-                "Menurun", "Naik"
+                "Sorting Ascending","Sorting Descending"
         };
         Object[][] initData = {
         };
         tableModel = new DefaultTableModel(initData, tableColom);
-        tabelsort.setModel(tableModel);
-        tabelsort.setAutoCreateRowSorter(false);
-        tabelsort.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tablesorting.setModel(tableModel);
+        tablesorting.setAutoCreateRowSorter(false);
+        tablesorting.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
     }
 
     public JPanel getRootPanel() {
         return RootPanel;
+
     }
 }
